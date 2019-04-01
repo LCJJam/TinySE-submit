@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import edu.hanyang.indexer.DocumentCursor;
@@ -22,6 +23,7 @@ import edu.hanyang.utils.TestDocCursor;
 import edu.hanyang.utils.TestIntermediateList;
 import edu.hanyang.utils.TestIntermediatePositionalList;
 
+@Ignore("Delete this line to unit test stage 2")
 public class QueryProcessTest {
 	List<List<Integer>> posList = null;
 	TinySEQueryProcess qp = null;
