@@ -14,7 +14,6 @@ import org.junit.Test;
 
 import edu.hanyang.submit.TinySEExternalSort;
 
-@Ignore("Delete this line to unit test stage 2")
 public class ExternalSortTest {
 	@Before
 	public void init() {
@@ -47,7 +46,7 @@ public class ExternalSortTest {
 
 		assertNotNull(resultInputStream);
 		assertNotNull(answerInputStream);
-
+		
 		for (int i = 0; i < 100000; i++) {
 			assertEquals(resultInputStream.readInt(), answerInputStream.readInt());
 			assertEquals(resultInputStream.readInt(), answerInputStream.readInt());

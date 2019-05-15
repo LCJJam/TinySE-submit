@@ -11,19 +11,19 @@ public class TinySEBPlusTree implements BPlusTree{
 	}
 
 	@Override
-	public void insert(int arg0, int arg1) {
+	public void insert(int key, int val) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void open(String arg0, String arg1, int arg2, int arg3) {
+	public void open(String metafile, String savepath, int blocksize, int nblocks) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public int search(int arg0) {
+	public int search(int key) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
