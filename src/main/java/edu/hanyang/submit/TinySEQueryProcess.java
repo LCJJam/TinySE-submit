@@ -15,13 +15,13 @@ public class TinySEQueryProcess implements QueryProcess {
 	@Override
 	public void op_and_w_pos(DocumentCursor op1, DocumentCursor op2, int shift, IntermediatePositionalList out)
 			throws IOException {
-		// TODO Auto-generated method stub
+		// operation and with position
 		
 	}
 	
 	@Override
 	public void op_and_wo_pos(DocumentCursor op1, DocumentCursor op2, IntermediateList out) throws IOException {
-		// TODO Auto-generated method stub
+		// operation and without position
 		
 	}
 
