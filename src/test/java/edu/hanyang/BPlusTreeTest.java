@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
  
 import edu.hanyang.submit.TinySEBPlusTree;
-
+//@Ignore("Delete this line to unit test stage 3")
 public class BPlusTreeTest {
  
 	@Test
@@ -43,16 +43,20 @@ public class BPlusTreeTest {
 		tree.insert(21, 8);
 		tree.insert(9, 98);
 		tree.insert(57, 54);
-		/*tree.insert(157, 54);
+		tree.insert(157, 54);
 		tree.insert(247, 54);
 		tree.insert(357, 254);
-		tree.insert(557, 54);*/
+		tree.insert(557, 54);
+		
 		tree.close();
  
 		// check read and write and result of tree
+		System.out.println("------시작------");
+		
 		tree = new TinySEBPlusTree();
 		tree.open(metapath, savepath, blocksize, nblocks);
- 
+		
+		
 		// Check search function
 		assertEquals(tree.search(5), 10);
 		assertEquals(tree.search(6), 15);
@@ -68,10 +72,10 @@ public class BPlusTreeTest {
 		assertEquals(tree.search(21), 8);
 		assertEquals(tree.search(9), 98);
 		assertEquals(tree.search(57), 54);
-		/*assertEquals(tree.search(157), 54);
+		assertEquals(tree.search(157), 54);
 		assertEquals(tree.search(247), 54);
 		assertEquals(tree.search(357), 254);
-		assertEquals(tree.search(557), 54);*/
+		assertEquals(tree.search(557), 54);
 		tree.close();
 	}
 }

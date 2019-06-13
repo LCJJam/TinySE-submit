@@ -19,14 +19,6 @@ public class TinySEBPlusTree implements BPlusTree{
 	public TinySEBPlusTree(){
 	}
 	
-	public TinySEBPlusTree(String savepath, String metapath, Node root, Integer maxKeys) throws FileNotFoundException {
-		TinySEBPlusTree.root = root;
-		TinySEBPlusTree.maxKeys = maxKeys;
-		TinySEBPlusTree.file = new RandomAccessFile(savepath, "rw");
-		this.savepath = savepath;
-		this.metapath = metapath;
-	}
-	
 	
 	@Override
 	public void open(String metapath, String savepath, int blocksize, int nblocks)  {
@@ -35,7 +27,6 @@ public class TinySEBPlusTree implements BPlusTree{
 		TinySEBPlusTree.blocksize = blocksize;
 		maxKeys = (blocksize - 12) / 8;
 		root_position = new Long(0);
-
 		File meta = new File(metapath);
 		if(meta.exists() && meta.length() > 0){
 			DataInputStream is = null;
@@ -96,9 +87,8 @@ public class TinySEBPlusTree implements BPlusTree{
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("load error");
 		}
-		TinySEBPlusTree.num_nodes += 1;
 	}
 	
 	@Override
@@ -107,7 +97,7 @@ public class TinySEBPlusTree implements BPlusTree{
 			root.insertValue(arg0, arg1);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("insert error");
 		}
 	}
 
@@ -117,18 +107,18 @@ public class TinySEBPlusTree implements BPlusTree{
 			return root.getValue(arg0);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("get value error");
 		}
 		return -1;
 	}
 
 	public static Node loadNode(Long offset) throws IOException {
 		file.seek(offset);
-		int type = file.readInt();
+		long type = file.readLong();
 		if(type == 1){
 			return new LeafNode(offset);
-		}else{
-			return new InternalNode((offset));
+		}else {
+			return new InternalNode(offset);
 		}
 	}
 	
@@ -189,5 +179,23 @@ public class TinySEBPlusTree implements BPlusTree{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		/*
+		try {
+			((LeafNode)TinySEBPlusTree.loadNode(new Long(0))).print();
+			((LeafNode)TinySEBPlusTree.loadNode(new Long(52))).print();
+			((LeafNode)TinySEBPlusTree.loadNode(new Long(208))).print();
+			((LeafNode)TinySEBPlusTree.loadNode(new Long(260))).print();
+			((LeafNode)TinySEBPlusTree.loadNode(new Long(312))).print();
+			((LeafNode)TinySEBPlusTree.loadNode(new Long(364))).print();
+			((LeafNode)TinySEBPlusTree.loadNode(new Long(572))).print();
+			System.out.println();
+			((InternalNode)TinySEBPlusTree.loadNode(new Long(104))).print();
+			((InternalNode)TinySEBPlusTree.loadNode(new Long(468))).print();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 	}
+	
 }
